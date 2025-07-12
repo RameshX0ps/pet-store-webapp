@@ -1,12 +1,37 @@
-name: Sample-CI
+name: Contineous Integration
+run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
 on:
   push:
+    paths:
+      - "web/**"
+      - ".github/workflows/web-ci.yaml"
     branches:
       - main
 jobs:
-  Docker-login:
-    runs-on: ubuntu-latest  
+  build-and-push:
+    runs-on: ubuntu-latest
+
     steps:
-    - name: Docker Login
-      uses: docker/login-action@v3.4.0
-          
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Docker Login to DockerHub
+      uses: docker/login-action@v3
+      with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build and push image for pet-store web(frontend image)
+      uses: docker/build-push-action@v6
+      with:
+        context: ./web
+        push: true
+        tags: |
+          "${{ vars.DOCKERHUB_USERNAME }}/${{ vars.APP_NAME }}:v1.0.${{ github.run_number }}"
+          "${{ vars.DOCKERHUB_USERNAME }}/${{ vars.APP_NAME }}:latest" 
