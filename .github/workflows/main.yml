@@ -1,0 +1,12 @@
+name: Sample-CI
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Docker-login:
+    runs-on: ubuntu-latest  
+    steps:
+    - name: Docker Login
+      uses: docker/login-action@v3.4.0
+          
