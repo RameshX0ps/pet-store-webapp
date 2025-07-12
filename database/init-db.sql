@@ -27,6 +27,6 @@ INSERT INTO images (name, description, url) VALUES('cat 11', 'cat image', 'https
 INSERT INTO images (name, description, url) VALUES('cat 12', 'cat image', 'https://cdn.pixabay.com/photo/2015/01/31/12/36/cat-618470_1280.jpg');
 INSERT INTO images (name, description, url) VALUES('cat 13', 'cat image', 'https://cdn.pixabay.com/photo/2017/01/20/21/22/kitten-asleep-in-a-pot-1995961_1280.jpg');
 INSERT INTO images (name, description, url) VALUES('cat 14', 'cat image', 'https://cdn.pixabay.com/photo/2017/11/09/21/41/cat-2934720_960_720.jpg');
-INSERT INTO images (name, description, url) VALUES('cat 15', 'cat image', 'https://cdn.pixabay.com/photo/2015/09/22/14/34/lion-951778_960_720.jpg');
+-- INSERT INTO images (name, description, url) VALUES('cat 15', 'cat image', 'https://cdn.pixabay.com/photo/2015/09/22/14/34/lion-951778_960_720.jpg');
 
 
